@@ -1,7 +1,8 @@
 package task;
 import java.time.LocalDate;
 import excecao.NegocioException;
-
+import excecao.InfoAutor;
+@InfoAutor(nome = "Claudivan urgente")
 public class tarefa_urgente extends tarefa{
     int progresso;
 

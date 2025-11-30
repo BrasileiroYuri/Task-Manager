@@ -1,8 +1,8 @@
 package task;
 import java.time.LocalDate;
 import excecao.NegocioException;
-
-
+import excecao.InfoAutor;
+@InfoAutor(nome = "Claudivan normal")
 public class tarefa {
     protected String desc;
     protected int dificuldade;

@@ -1,5 +1,6 @@
 package arvore;
-
+import excecao.InfoAutor;
+@InfoAutor(nome = "Yuri brasileiro")
 public class arvored<K, V> implements arvorei<K, V> {
     @Override
     public void inserir(K chave, V valor) {

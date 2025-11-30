@@ -1,0 +1,8 @@
+package task;
+import java.time.LocalDate;
+
+public class tarefa_simples extends tarefa{
+    public tarefa_simples(String d, int p,LocalDate a) {
+        super(d,p,a);
+    }
+}

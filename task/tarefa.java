@@ -3,28 +3,35 @@ import java.time.LocalDate;
 
 public class tarefa {
     protected String desc;
-    protected int prioridade;
+    protected int dificuldade;
     protected LocalDate data;
 
     public tarefa(String descricao, int p, LocalDate a) {
         desc = descricao;
-        prioridade = p;
+        dificuldade = p;
         data = a;
     }
     public tarefa converterParaFilha(tarefa task) {
-        if ("funcdeselecao") {
-        return new tarefa_urgente(task.desc,task.prioridade,task.data);
+        if (isUrgente(task)) {
+        return new tarefa_urgente(task.desc,task.dificuldade,task.data);
         } 
         else {
-        return new tarefa_simples(task.desc, task.prioridade,task.data);
+        return new tarefa_simples(task.desc, task.dificuldade,task.data);
         }
     }
-   
+
+    public boolean isUrgente(tarefa task) {
+    LocalDate hoje = LocalDate.now();
+    long diasRestantes = hoje.until(task.data).getDays();
+    double diasLimite = task.dificuldade * 0.7; 
+    return diasRestantes <= diasLimite;
+    }
+
     public String getdesc(){
         return desc;
     }
-    public int getprioridade(){
-        return prioridade;
+    public int getdificuldade(){
+        return dificuldade;
     }
     public LocalDate getdata(){
         return data;
@@ -32,10 +39,10 @@ public class tarefa {
     public void setdesc(String d){
         desc = d;
     }
-    public void getprioridade(int p){
-        prioridade = p;
+    public void setdificuldade(int p){
+        dificuldade = p;
     }
-    public void getdata(LocalDate a){
+    public void setdata(LocalDate a){
         data = a;
     }
 }

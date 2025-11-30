@@ -1,17 +1,22 @@
 package task;
 import java.time.LocalDate;
+import excecao.NegocioException;
+
 
 public class tarefa {
     protected String desc;
     protected int dificuldade;
     protected LocalDate data;
 
-    public tarefa(String descricao, int p, LocalDate a) {
+    public tarefa(String descricao, int p, LocalDate a) throws NegocioException {
+        if (p < 0 || p > 10) {
+        throw new NegocioException("A dificuldade deve estar entre 0 e 10.");
+        }
         desc = descricao;
         dificuldade = p;
         data = a;
     }
-    public tarefa converterParaFilha(tarefa task) {
+    public tarefa converterParaFilha(tarefa task) throws NegocioException {
         if (isUrgente(task)) {
         return new tarefa_urgente(task.desc,task.dificuldade,task.data);
         } 

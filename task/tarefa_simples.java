@@ -5,13 +5,11 @@ import excecao.InfoAutor;
 import excecao.NegocioException;
 @InfoAutor(nome = "Claudivan simples")
 public class tarefa_simples extends tarefa{
-    int progresso;
 
-    public tarefa_simples(String d, int p,LocalDate a) throws NegocioException {
-        super(d,p,a);
-        progresso = 0;
+    public tarefa_simples(String d, int p,LocalDate a,int pro) throws NegocioException {
+        super(d,p,a,pro);
     }
-
+    @Override
     public void atualizar(int a) throws NegocioException {
         if (progresso < 0 || progresso > 100) {
         throw new NegocioException("Progresso deve estar entre 0 e 100.");

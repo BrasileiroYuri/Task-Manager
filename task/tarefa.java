@@ -1,66 +1,81 @@
 package task;
+
 import java.time.LocalDate;
 import excecao.NegocioException;
 import excecao.InfoAutor;
+
 @InfoAutor(nome = "Claudivan normal")
-public class tarefa {
-    protected String desc;
-    protected int dificuldade;
-    protected LocalDate data;
-    protected int progresso;
+public class tarefa implements Comparable<tarefa> {
+  protected String desc;
+  protected int prioridade;
+  protected LocalDate data;
+  protected int progresso;
 
-    public tarefa(String descricao, int p, LocalDate a,int pro) throws NegocioException {
-        if (p < 0 || p > 10) {
-        throw new NegocioException("A dificuldade deve estar entre 0 e 10.");
-        }
-        if (progresso < 0 || progresso > 100) {
-        throw new NegocioException("Progresso deve estar entre 0 e 100.");
-        }
-        progresso = pro;
-        desc = descricao;
-        dificuldade = p;
-        data = a;
+  public tarefa(String descricao, int p, LocalDate a, int pro) throws NegocioException {
+    if (p < 0 || p > 10) {
+      throw new NegocioException("A prioridade deve estar entre 0 e 10.");
     }
-    public tarefa converterParaFilha(tarefa task) throws NegocioException {
-        if (isUrgente(task)) {
-        return new tarefa_urgente(task.desc,task.dificuldade,task.data,task.progresso);
-        } 
-        else {
-        return new tarefa_simples(task.desc, task.dificuldade,task.data,task.progresso);
-        }
+    if (progresso < 0 || progresso > 100) {
+      throw new NegocioException("Progresso deve estar entre 0 e 100.");
     }
+    progresso = pro;
+    desc = descricao;
+    prioridade = p;
+    data = a;
+  }
 
-    public boolean isUrgente(tarefa task) {
+  @Override
+  public int compareTo(tarefa other) {
+    return this.prioridade - other.prioridade;
+  }
+
+  public tarefa converterParaFilha(tarefa task) throws NegocioException {
+    if (isUrgente(task)) {
+      return new tarefa_urgente(task.desc, task.prioridade, task.data, task.progresso);
+    } else {
+      return new tarefa_simples(task.desc, task.prioridade, task.data, task.progresso);
+    }
+  }
+
+  public boolean isUrgente(tarefa task) {
     LocalDate hoje = LocalDate.now();
     long diasRestantes = hoje.until(task.data).getDays();
-    double diasLimite = task.dificuldade * 0.7; 
+    double diasLimite = task.prioridade * 0.7;
     return diasRestantes <= diasLimite;
-    }
+  }
 
-     public void atualizar(int a) throws NegocioException {
-        if (progresso < 0 || progresso > 100) {
-        throw new NegocioException("Progresso deve estar entre 0 e 100.");
-        }
-        progresso = a;
+  public void atualizar(int a) throws NegocioException {
+    if (progresso < 0 || progresso > 100) {
+      throw new NegocioException("Progresso deve estar entre 0 e 100.");
     }
+    progresso = a;
+  }
 
-    public String getdesc(){
-        return desc;
-    }
-    public int getdificuldade(){
-        return dificuldade;
-    }
-    public LocalDate getdata(){
-        return data;
-    }
-    public void setdesc(String d){
-        desc = d;
-    }
-    public void setdificuldade(int p){
-        dificuldade = p;
-    }
-    public void setdata(LocalDate a){
-        data = a;
-    }
+  public String toString() {
+    return desc + " " + prioridade;
+  }
+
+  public String getdesc() {
+    return desc;
+  }
+
+  public int getdificuldade() {
+    return prioridade;
+  }
+
+  public LocalDate getdata() {
+    return data;
+  }
+
+  public void setdesc(String d) {
+    desc = d;
+  }
+
+  public void setdificuldade(int p) {
+    prioridade = p;
+  }
+
+  public void setdata(LocalDate a) {
+    data = a;
+  }
 }
-

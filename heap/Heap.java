@@ -1,8 +1,10 @@
+package heap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+import excecao.InfoAutor;
+@InfoAutor(nome = "Yuri brasileiro")
 public class Heap<T extends Comparable<T>> {
   private final List<T> data = new ArrayList<>();
 

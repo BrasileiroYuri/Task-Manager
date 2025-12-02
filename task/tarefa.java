@@ -9,16 +9,11 @@ public class tarefa implements Comparable<tarefa> {
   protected String desc;
   protected int prioridade;
   protected LocalDate data;
-  protected int progresso;
 
-  public tarefa(String descricao, int p, LocalDate a, int pro) throws NegocioException {
+  public tarefa(String descricao, int p, LocalDate a) throws NegocioException {
     if (p < 0 || p > 10) {
       throw new NegocioException("A prioridade deve estar entre 0 e 10.");
-    }
-    if (progresso < 0 || progresso > 100) {
-      throw new NegocioException("Progresso deve estar entre 0 e 100.");
-    }
-    progresso = pro;
+    }   
     desc = descricao;
     prioridade = p;
     data = a;
@@ -29,11 +24,11 @@ public class tarefa implements Comparable<tarefa> {
     return this.prioridade - other.prioridade;
   }
 
-  public tarefa converterParaFilha(tarefa task) throws NegocioException {
-    if (isUrgente(task)) {
-      return new tarefa_urgente(task.desc, task.prioridade, task.data, task.progresso);
+  public tarefa converterParaFilha() throws NegocioException {
+    if (isUrgente(this)) {
+      return new tarefa_urgente(desc, prioridade, data);
     } else {
-      return new tarefa_simples(task.desc, task.prioridade, task.data, task.progresso);
+      return new tarefa_simples(desc, prioridade, data);
     }
   }
 
@@ -42,13 +37,6 @@ public class tarefa implements Comparable<tarefa> {
     long diasRestantes = hoje.until(task.data).getDays();
     double diasLimite = task.prioridade * 0.7;
     return diasRestantes <= diasLimite;
-  }
-
-  public void atualizar(int a) throws NegocioException {
-    if (progresso < 0 || progresso > 100) {
-      throw new NegocioException("Progresso deve estar entre 0 e 100.");
-    }
-    progresso = a;
   }
 
   public String toString() {

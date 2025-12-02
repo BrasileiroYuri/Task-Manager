@@ -8,9 +8,9 @@ import excecao.InfoAutor;
 public class tarefa implements Comparable<tarefa> {
   protected String desc;
   protected int prioridade;
-  protected LocalDate data;
+  protected String data;
 
-  public tarefa(String descricao, int p, LocalDate a) throws NegocioException {
+  public tarefa(String descricao, int p, String a) throws NegocioException {
     if (p < 0 || p > 10) {
       throw new NegocioException("A prioridade deve estar entre 0 e 10.");
     }   
@@ -33,10 +33,7 @@ public class tarefa implements Comparable<tarefa> {
   }
 
   public boolean isUrgente(tarefa task) {
-    LocalDate hoje = LocalDate.now();
-    long diasRestantes = hoje.until(task.data).getDays();
-    double diasLimite = task.prioridade * 0.7;
-    return diasRestantes <= diasLimite;
+    return task.prioridade > 5;
   }
 
   public String toString() {
@@ -51,7 +48,7 @@ public class tarefa implements Comparable<tarefa> {
     return prioridade;
   }
 
-  public LocalDate getdata() {
+  public String getdata() {
     return data;
   }
 
@@ -63,7 +60,7 @@ public class tarefa implements Comparable<tarefa> {
     prioridade = p;
   }
 
-  public void setdata(LocalDate a) {
+  public void setdata(String a) {
     data = a;
   }
 }

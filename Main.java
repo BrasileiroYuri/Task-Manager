@@ -35,12 +35,12 @@ public class Main {
 
         try {
             
-            tarefa t4 = new tarefa("t4", 4, LocalDate.now());
-            tarefa t5 = new tarefa("t5", 5, LocalDate.now());
-            tarefa t6 = new tarefa("t6", 6, LocalDate.now());
-            tarefa t2 = new tarefa("t2", 2, LocalDate.now());
-            tarefa t1 = new tarefa("t1", 1, LocalDate.now());
-            tarefa t3 = new tarefa("t3", 3, LocalDate.now());
+            tarefa t4 = new tarefa("t4", 4, "12/10/2026");
+            tarefa t5 = new tarefa("t5", 5, "14/08/2027");
+            tarefa t6 = new tarefa("t6", 6, "01/04/2028");
+            tarefa t2 = new tarefa("t2", 2, "09/01/2026");
+            tarefa t1 = new tarefa("t1", 1, "10/02/2027");
+            tarefa t3 = new tarefa("t3", 3, "23/04/2030");
 
             System.out.println("✔ Inserindo tarefas na heap...\n");
 

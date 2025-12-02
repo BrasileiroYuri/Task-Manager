@@ -37,7 +37,7 @@ public class tarefa implements Comparable<tarefa> {
   }
 
   public String toString() {
-    return desc + " " + prioridade;
+    return "|Descrição: " + desc + "|Data: " + data + "|Prioridade: " + prioridade + "|";
   }
 
   public String getdesc() {

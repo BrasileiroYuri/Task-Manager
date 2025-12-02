@@ -7,18 +7,18 @@ import excecao.InfoAutor;
 @InfoAutor(nome = "Yuri brasileiro")
 public class Heap<T extends Comparable<T>> implements IHeap<T> {
   private final List<T> data = new ArrayList<>();
-
+@Override
   public void push(T elem) {
     data.add(elem);
     percolateUp(data.size() - 1);
   }
-
+@Override
   public T top() {
     if (data.isEmpty())
       throw new NoSuchElementException("Heap is empty");
     return data.get(0);
   }
-
+@Override
   public void pop() {
     if (data.isEmpty())
       throw new NoSuchElementException("Heap is empty");
@@ -31,7 +31,7 @@ public class Heap<T extends Comparable<T>> implements IHeap<T> {
     data.set(0, last);
     percolateDown(0);
   }
-
+@Override
   public int size() {
     return data.size();
   }
@@ -64,7 +64,7 @@ public class Heap<T extends Comparable<T>> implements IHeap<T> {
       id = largest;
     }
   }
-
+@Override
   public void print() {
     for (int i = 0; i < data.size(); ++i) {
       System.out.println(i + " " + data.get(i));

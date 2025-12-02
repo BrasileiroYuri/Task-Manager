@@ -40,7 +40,7 @@ public class Main {
             tarefa t6 = new tarefa("t6", 6, "01/04/2028");
             tarefa t2 = new tarefa("t2", 2, "09/01/2026");
             tarefa t1 = new tarefa("t1", 1, "10/02/2027");
-            tarefa t3 = new tarefa("t3", 3, "23/04/2030");
+            tarefa t3 = new tarefa("t3", 3, "23/04/2028");
 
             System.out.println("✔ Inserindo tarefas na heap...\n");
 
@@ -55,9 +55,6 @@ public class Main {
             System.out.println("\n📌 Estado atual da HEAP:");
             h.print();
 
-            System.out.println("\n📌 Tarefas ordenadas por prioridade:");
-            
-          
             System.out.println("\n✔ Removendo a tarefa de maior prioridade:");
             h.pop();
 

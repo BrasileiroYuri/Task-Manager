@@ -1,6 +1,6 @@
 package task;
 
-import java.time.LocalDate;
+
 import excecao.NegocioException;
 import excecao.InfoAutor;
 

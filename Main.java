@@ -1,5 +1,5 @@
 import task.tarefa;
-import java.time.LocalDate;
+
 
 import excecao.NegocioException;
 import heap.Heap;
@@ -13,19 +13,18 @@ public class Main {
     public static void main(String[] args) {
 
       
-        Class<?>[] classes = {
-    tarefa.class,
-    tarefa_urgente.class,
-    tarefa_simples.class,
-    Heap.class,
-    NegocioException.class
-   
+    Class<?>[] classes = {
+        tarefa.class,
+        tarefa_urgente.class,
+        tarefa_simples.class,
+        Heap.class,
+        NegocioException.class
     };
         for (Class<?> cls : classes) {
     InfoAutor autor = cls.getAnnotation(InfoAutor.class);
 
     if (autor != null) {
-        System.out.println("📜 Classe: " + cls.getSimpleName());
+        System.out.println("Classe: " + cls.getSimpleName());
         System.out.println("Nome: " + autor.nome());
         
         System.out.println("----------------------------------------");
@@ -42,7 +41,7 @@ public class Main {
             tarefa t1 = new tarefa("t1", 1, "10/02/2027");
             tarefa t3 = new tarefa("t3", 3, "23/04/2028");
 
-            System.out.println("✔ Inserindo tarefas na heap...\n");
+            System.out.println("Inserindo tarefas na heap...\n");
 
             h.push(t5.converterParaFilha());
             h.push(t6.converterParaFilha());
@@ -52,13 +51,13 @@ public class Main {
             h.push(t2.converterParaFilha());
 
            
-            System.out.println("\n📌 Estado atual da HEAP:");
+            System.out.println("\nEstado atual da HEAP:");
             h.print();
 
-            System.out.println("\n✔ Removendo a tarefa de maior prioridade:");
+            System.out.println("\nRemovendo a tarefa de maior prioridade:");
             h.pop();
 
-            System.out.println("\n📌 Heap após remoção:");
+            System.out.println("\nHeap após remoção:");
             h.print();
 
         } catch (NegocioException e) {

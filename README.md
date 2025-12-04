@@ -2,14 +2,5 @@
 
 # How to use
 
-## Add a task
-
-tm -a <task_name> [priority]
-
-## Remove a task
-
-tm -d <task_name> [priority]
-
-## List all tasks
-
-tm -l
+Para compilar-> javac *.java
+para executar-> java Main
